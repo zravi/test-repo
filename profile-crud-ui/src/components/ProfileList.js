@@ -3,11 +3,14 @@ import axios from 'axios';
 import ProfileItem from './ProfileItem';
 import ProfileForm from './ProfileForm';
 import './ProfileList.css';  // Import CSS for styling
+import Modal from './Modal';
 
 const ProfileList = () => {
   const [profiles, setProfiles] = useState([]);
   const [selectedProfile, setSelectedProfile] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchProfiles = async () => {
@@ -21,16 +24,36 @@ const ProfileList = () => {
   const handleEdit = (profile) => {
     setSelectedProfile(profile);
     setIsEditing(true);
+    setIsModalOpen(true);
   };
+
+  // const handleEdit = (profile) => {
+  //   setSelectedProfile(profile);
+  //   setIsEditing(true);
+  // };
 
   const handleDelete = async (id) => {
     await axios.delete(`http://localhost:5000/v1/profile/${id}`);
     setProfiles(profiles.filter((profile) => profile.id !== id));
   };
 
+  // const handleSave = async () => {
+  //   const response = await axios.get('http://localhost:5000/v1/profile');
+  //   setProfiles(response.data);
+  //   setIsEditing(false);
+  //   setSelectedProfile(null);
+  // };
+
   const handleSave = async () => {
     const response = await axios.get('http://localhost:5000/v1/profile');
     setProfiles(response.data);
+    setIsEditing(false);
+    setSelectedProfile(null);
+    setIsModalOpen(false);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
     setIsEditing(false);
     setSelectedProfile(null);
   };
@@ -52,7 +75,13 @@ const ProfileList = () => {
           />
         ))}
       </div>
+      <Modal show={isModalOpen} onClose={closeModal}>
+        {selectedProfile && (
+          <ProfileForm profile={selectedProfile} onSave={handleSave} />
+        )}
+      </Modal>
     </div>
+
   );
 };
 
