@@ -1,0 +1,25 @@
+.profile-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 16px;
+  }
+  
+  .profile-cards .profile-card {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: calc(33.333% - 16px);
+    box-sizing: border-box;
+  }
+  
+  .profile-cards .profile-card h3 {
+    margin-top: 0;
+  }
+  
+  .profile-cards .profile-card button {
+    margin-right: 8px;
+  }
+  

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ProfileItem from './ProfileItem';
 import ProfileForm from './ProfileForm';
+import './ProfileList.css';  // Import CSS for styling
 
 const ProfileList = () => {
   const [profiles, setProfiles] = useState([]);
@@ -41,7 +42,7 @@ const ProfileList = () => {
       ) : (
         <button onClick={() => setIsEditing(true)}>Add Profile</button>
       )}
-      <ul>
+      <div className="profile-cards">
         {profiles.map((profile) => (
           <ProfileItem
             key={profile.id}
@@ -50,7 +51,7 @@ const ProfileList = () => {
             onDelete={() => handleDelete(profile.id)}
           />
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
