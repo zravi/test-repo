@@ -17,7 +17,19 @@ const sequelize = new Sequelize({
     min: 0,
     acquire: 60000,
     idle: 60000
-  }
+  },
+  logging: false,
+  define: {
+    underscored: false,
+    freezeTableName: false,
+    syncOnAssociation: true,
+    charset: 'utf8',
+    collate: 'utf8_general_ci',
+    // classMethods: {method1: function() {}},
+    // instanceMethods: {method2: function() {}},
+    timestamps: true,
+    // schema: "prefix"
+}
 });
 try {
   sequelize.authenticate();
