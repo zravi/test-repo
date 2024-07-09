@@ -8,7 +8,7 @@ function App() {
       <header className="App-header">
         {/* <img src={logo} className="App-logo" alt="logo" /> */}
         <div className='profile-card'>
-          <h1>Profile CRUD</h1>
+          <h1></h1>
           <ProfileList />
         </div>
         <a

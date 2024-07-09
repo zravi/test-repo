@@ -1,0 +1,122 @@
+{
+    "info": {
+      "_postman_id": "your-postman-id",
+      "name": "Student Management API",
+      "description": "API endpoints for managing student records.",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Create Student",
+        "request": {
+          "method": "POST",
+          "header": [],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n    \"name\": \"1\",\n    \"age\": \"1\",\n    \"class\": \"1\",\n    \"marks\": [\n        {\n            \"subject\": \"1\",\n            \"marks\": \"1\"\n        },\n        {\n            \"subject\": \"2\",\n            \"marks\": \"2\"\n        }\n    ]\n}"
+          },
+          "url": {
+            "raw": "http://localhost:5000/v1/student",
+            "host": [
+              "localhost"
+            ],
+            "port": "5000",
+            "path": [
+              "v1",
+              "student"
+            ]
+          },
+          "description": "Creates a new student record."
+        },
+        "response": []
+      },
+      {
+        "name": "Get All Students",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:5000/v1/student",
+            "host": [
+              "localhost"
+            ],
+            "port": "5000",
+            "path": [
+              "v1",
+              "student"
+            ]
+          },
+          "description": "Retrieves all students."
+        },
+        "response": []
+      },
+      {
+        "name": "Get Student by ID",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:5000/v1/student/:id",
+            "host": [
+              "localhost"
+            ],
+            "port": "5000",
+            "path": [
+              "v1",
+              "student",
+              ":id"
+            ]
+          },
+          "description": "Retrieves a student by their ID."
+        },
+        "response": []
+      },
+      {
+        "name": "Update Student by ID",
+        "request": {
+          "method": "PUT",
+          "header": [],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n    \"name\": \"Updated Name\",\n    \"age\": \"Updated Age\",\n    \"class\": \"Updated Class\"\n}"
+          },
+          "url": {
+            "raw": "http://localhost:5000/v1/student/:id",
+            "host": [
+              "localhost"
+            ],
+            "port": "5000",
+            "path": [
+              "v1",
+              "student",
+              ":id"
+            ]
+          },
+          "description": "Updates an existing student record."
+        },
+        "response": []
+      },
+      {
+        "name": "Remove Student by ID",
+        "request": {
+          "method": "DELETE",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:5000/v1/student/:id",
+            "host": [
+              "localhost"
+            ],
+            "port": "5000",
+            "path": [
+              "v1",
+              "student",
+              ":id"
+            ]
+          },
+          "description": "Deletes a student record by their ID."
+        },
+        "response": []
+      }
+    ]
+  }
+  

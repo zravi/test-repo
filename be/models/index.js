@@ -2,15 +2,17 @@ const dotenv = require('dotenv');
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
+require('dotenv').config();
 
 dotenv.config({ path: path.join(__dirname, '../../.env') });
 const basename = path.basename(__filename);
 const db = {};
 const sequelize = new Sequelize({
-  username:"postgres",
-  password: "postgres",
-  database: "test_DB",
-  host: "localhost",
+  username: process.env.DB_USER,
+  password:process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  host:process.env.DB_HOST,
+  port:process.env.DB_PORT,
   dialect: "postgres",
   pool: {
     max: 5,
@@ -18,23 +20,12 @@ const sequelize = new Sequelize({
     acquire: 60000,
     idle: 60000
   },
-  logging: false,
-  define: {
-    underscored: false,
-    freezeTableName: false,
-    syncOnAssociation: true,
-    charset: 'utf8',
-    collate: 'utf8_general_ci',
-    // classMethods: {method1: function() {}},
-    // instanceMethods: {method2: function() {}},
-    timestamps: true,
-    // schema: "prefix"
-}
+  logging:  console.log,
 });
 try {
   sequelize.authenticate();
 } catch (err) {
- console.error('Unable to connect to the database:', err)
+  console.error('Unable to connect to the database:', err)
 }
 fs.readdirSync(__dirname)
   .filter((file) => file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js')

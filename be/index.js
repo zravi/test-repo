@@ -3,6 +3,8 @@ const app = express()
 const requestLogger = require('./middlewares/requestlogger');
 const routes = require('./routes/v1');
 const cors=require('cors')
+require('dotenv').config();
+
 app.use(requestLogger);
 
 app.use(cors())
@@ -17,5 +19,5 @@ app.use('/v1', routes);
 // })
 
 
-console.log("server started @ 3000")
-app.listen(5000)
+console.log(`server started @ ${process.env.PORT}`)
+app.listen(process.env.PORT)
