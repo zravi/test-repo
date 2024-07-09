@@ -1,7 +1,9 @@
 const express = require('express')
 const app = express()
+const requestLogger = require('./middlewares/requestlogger');
 const routes = require('./routes/v1');
 const cors=require('cors')
+app.use(requestLogger);
 
 app.use(cors())
 app.use(express.json());
