@@ -4,6 +4,7 @@ import ProfileItem from './ProfileItem';
 import ProfileForm from './ProfileForm';
 import './ProfileList.css';  // Import CSS for styling
 import Modal from './Modal';
+import config  from '../constant';
 
 const ProfileList = () => {
   const [profiles, setProfiles] = useState([]);
@@ -14,7 +15,7 @@ const ProfileList = () => {
 
   useEffect(() => {
     const fetchProfiles = async () => {
-      const response = await axios.get('http://localhost:5000/v1/profile');
+      const response = await axios.get(`${config.BASE_URL}/profile`);
       setProfiles(response.data);
     };
 
@@ -33,7 +34,7 @@ const ProfileList = () => {
   // };
 
   const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:5000/v1/profile/${id}`);
+    await axios.delete(`${config.BASE_URL}/profile/${id}`);
     setProfiles(profiles.filter((profile) => profile.id !== id));
   };
 
@@ -45,7 +46,7 @@ const ProfileList = () => {
   // };
 
   const handleSave = async () => {
-    const response = await axios.get('http://localhost:5000/v1/profile');
+    const response = await axios.get(`${config.BASE_URL}/profile`);
     setProfiles(response.data);
     setIsEditing(false);
     setSelectedProfile(null);
