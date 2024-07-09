@@ -4,7 +4,7 @@ import ProfileItem from './ProfileItem';
 import ProfileForm from './ProfileForm';
 import './ProfileList.css';  // Import CSS for styling
 import Modal from './Modal';
-import config  from '../constant';
+import config from '../constant';
 
 const ProfileList = () => {
   const [profiles, setProfiles] = useState([]);
